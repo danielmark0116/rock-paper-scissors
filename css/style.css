@@ -1,0 +1,19 @@
+body { font-family: 'Poppins', sans-serif; font-weight: 400; background-color: #e8e8e8; text-align: center; }
+
+#game-winner { font-size: 400%; text-transform: uppercase; }
+
+.hand-font { font-family: 'Shadows Into Light', cursive; font-size: 500%; }
+
+.fas { font-size: 200%; padding: 1rem 1rem; margin: 1rem 1rem; }
+
+.btn-game, .btn-game-robot { width: 150px; height: 150px; line-height: 150px; font-size: 80px; margin: 0 2rem; padding: auto auto; transition: 0.4s ease-in-out; border-radius: 50%; transform: scale(1) rotate(-20deg); }
+
+.btn-game:hover, .btn-game-robot:hover { transform: scale(1.02) rotate(0deg); text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); cursor: pointer; }
+
+.btn-game-robot { transform: scale(1) rotate(0deg); display: none; }
+
+.btn-game-robot.active { display: block; }
+
+.btn-game-robot:hover { cursor: auto; transform: scale(1) rotate(0deg); }
+
+.fa-circle { color: rgba(0, 0, 0, 0.2); }

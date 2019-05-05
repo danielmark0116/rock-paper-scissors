@@ -1,0 +1,29 @@
+// COLORS:
+
+$grey: #e8e8e8;
+$blue: #5588a3;
+$dark-blue: #145374;
+$dark: #00334e;
+
+// FONTS
+// font-family: 'Poppins', sans-serif;
+// font-family: 'Shadows Into Light', cursive;
+
+// GLOBALS
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background-color: $grey;
+    text-align: center;
+}
+
+#game-winner {
+    font-size: 400%;
+    text-transform: uppercase;
+}
+
+// IMPORTS
+
+@import "header";
+@import "buttons";
