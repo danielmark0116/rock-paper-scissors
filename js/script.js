@@ -4,6 +4,11 @@ var gameField = document.querySelector("#game-winner");
 var playerScoreField = document.querySelector("#player-score");
 var robotScoreField = document.querySelector("#robot-score");
 var roundCountField = document.querySelector("#round-count");
+var gameSection = document.querySelector("#game-section");
+var resultsSection = document.querySelector("#results-section");
+var startGameBtn = document.querySelector("#start-btn");
+var winnerField = document.querySelector("#winner");
+
 
 // playerScoreField.innerHTML = 0;
 // robotScoreField.innerHTML = 0;
@@ -14,6 +19,10 @@ var roundCount = 1;
 
 roundCountField.innerHTML = 1;
 
+startGameBtn.addEventListener("click", function () {
+    gameSection.style.display = "block";
+    startGameBtn.classList.toggle("active");
+});
 
 // ------------------------------------------------------ 
 // RULES: ------------------------------------------
@@ -85,6 +94,26 @@ var gameAnimation = x => {
 var gameFinish = (maxRounds, roundNumber) => {
     if (maxRounds === roundNumber) {
         roundCountField.innerHTML = "finish";
+        // gameSection.style.display = "none";
+        playerRock.classList.toggle("off");
+        playerPaper.classList.toggle("off");
+        playerScissors.classList.toggle("off");
+        resultsSection.style.display = "block";
+        var test = document.querySelector("#test");
+        var test2 = document.querySelector("#test2");
+        test.style.display = "none";
+        test2.style.display = "none";
+        var winner;
+        if (playerScore === robotScore) {
+            winner = "draw";
+        } else if (playerScore > robotScore) {
+            winner = "player";
+        } else {
+            winner = "robot";
+        }
+        winnerField.innerHTML = winner;
+
+
     }
 };
 

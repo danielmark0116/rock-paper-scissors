@@ -17,6 +17,16 @@
     }
 }
 
+.start-btn {
+    background-color: red;
+    width: 400px;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
 .btn-game-robot {
     @extend .btn-game;
     transform: scale(1) rotate(0deg);

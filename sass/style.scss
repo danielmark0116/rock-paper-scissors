@@ -23,6 +23,25 @@ body {
     text-transform: uppercase;
 }
 
+#results-section {
+    display: none;
+}
+
+#game-section {
+    display: none;
+}
+
+#rock,
+#paper,
+#scissors {
+    transition: 0.8s;
+
+    &.off {
+        z-index: -2;
+        color: rgba(black, 0.3);
+    }
+}
+
 // IMPORTS
 
 @import "header";
