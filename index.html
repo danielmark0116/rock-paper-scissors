@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="vendor/animate.css">
     <title>Rock Paper Scissors</title>
 </head>
-<body>
-    <div class="container">
+<body class="animated fadeIn">
+    <div class="container pt-1 pb-1">
         <h1 class="text-center pt-5 hand-font animated fadeIn">ROCK PAPERS SCISSORS</h1>
         <p class="text-center">
             <i class="fas fa-hand-rock"></i>
@@ -22,17 +22,19 @@
     </div>
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="start-btn active" id="start-btn">Let's play</div>
+            <div class="start-btn active animated pulse infinite slow" id="start-btn">Let's play</div>
         </div>
     </div>
-    <section class="mt-5" id="game-section">
+    <section class="mt-1 animated fadeIn" id="game-section">
         <div class="container">
             <div class="row">
                 <div class="col col-sm-12">
-                    <h2>Runda</h2>
-                    <div class="d-flex justify-content-center">
-                        <div id="round-count"></div>
-                        <div id="max-rounds-count"></div>
+                    <div class="round-card">
+                        <h2>Round</h2>
+                        <div class="d-flex justify-content-center">
+                            <div id="round-count" class="round-card-left"></div>
+                            <div id="max-rounds-count" class="round-card-right"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,8 +58,10 @@
             </div>
             <div class="row">
                 <div class="col col-sm-4">
-                    <p>your score</p>
-                    <div id="player-score">0</div>
+                    <div class="score-card">
+                        <p>your score</p>
+                        <div id="player-score">0</div>
+                    </div>
                 </div>
                 <div class="col col-sm-4">
                     <div id="test">
@@ -77,15 +81,17 @@
                             </div>
                         </div>
                     </div>
-                    <div id="results-section">
+                    <div id="results-section" class="animated fadeInUp results-section">
                         <h2>WINNER:</h2>
                         <h3 id="winner"></h3>
                         <a href="." class="btn btn-success btn-lg active" role="button" aria-pressed="true">Play Again!</a>
                     </div>
                 </div>
                 <div class="col col-sm-4">
-                    <p>comp score</p>
-                    <div id="robot-score">0</div>
+                    <div class="score-card">
+                        <p>robot score</p>
+                        <div id="robot-score">0</div>
+                    </div>
                 </div>
             </div>
             <div class="row" id="test2">

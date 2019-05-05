@@ -1,5 +1,10 @@
 'use strict';
 
+// GAME SETTINGS
+
+var btnsTimeout = 1000;
+
+
 var gameField = document.querySelector("#game-winner");
 var playerScoreField = document.querySelector("#player-score");
 var robotScoreField = document.querySelector("#robot-score");
@@ -9,6 +14,7 @@ var resultsSection = document.querySelector("#results-section");
 var startGameBtn = document.querySelector("#start-btn");
 var winnerField = document.querySelector("#winner");
 var maxRoundsCountField = document.querySelector("#max-rounds-count");
+var gameBtns = document.querySelectorAll(".btn-game");
 
 
 
@@ -70,14 +76,17 @@ var whoWins = (x, y) => {
     } else if ((x === 1 && y === 3) || (x === 2 && y === 1) || (x === 3 && y === 2)) {
         playerScore++;
         playerScoreField.innerHTML = playerScore;
+        scoreAnimation(playerScoreField);
         return "player";
     } else if ((x === 1 && y === 2) || (x === 2 && y === 3)) {
         robotScore++;
         robotScoreField.innerHTML = robotScore;
+        scoreAnimation(robotScoreField);
         return "robot";
     } else {
         robotScore++;
         robotScoreField.innerHTML = robotScore;
+        scoreAnimation(robotScoreField);
         return "robot";
     }
 };
@@ -99,29 +108,52 @@ var gameAnimation = x => {
         container.classList.add("animated", "bounce");
     }, 150);
     setTimeout(function () {
-        gameField.classList.add("animated", "rotateIn");
+        gameField.classList.add("animated", "tada");
         gameField.style.display = "block"
     }, 50);
     gameField.style.display = "none";
     container.classList.remove("animated", "bounce");
-    gameField.classList.remove("animated", "rotateIn");
+    gameField.classList.remove("animated", "tada");
+    // container.classList.add("animated", "bounce");
+};
+
+var scoreAnimation = x => {
+
+    setTimeout(function () {
+        x.classList.add("animated", "bounce");
+    }, 150);
+    setTimeout(function () {
+        x.classList.add("animated", "rotateIn");
+        x.style.display = "block"
+    }, 50);
+    x.style.display = "none";
+    x.classList.remove("animated", "bounce");
+    x.classList.remove("animated", "rotateIn");
     // container.classList.add("animated", "bounce");
 };
 
 // MAX round count and then:
 var gameFinish = (maxRounds, roundNumber) => {
     if (maxRounds === roundNumber) {
-        roundCountField.style.display = "none";
         maxRoundsCountField.innerHTML = "Game has ended";
+        maxRoundsCountField.style.color = "red";
+        setTimeout(x => {
+            var test = document.querySelector("#test");
+            var test2 = document.querySelector("#test2");
+            test.style.display = "none";
+            test2.style.display = "none";
+        }, 1800);
+        roundCountField.style.display = "none";
         // gameSection.style.display = "none";
         playerRock.classList.toggle("off");
         playerPaper.classList.toggle("off");
         playerScissors.classList.toggle("off");
-        resultsSection.style.display = "block";
-        var test = document.querySelector("#test");
-        var test2 = document.querySelector("#test2");
-        test.style.display = "none";
-        test2.style.display = "none";
+        setTimeout(x => {
+            resultsSection.style.display = "block";
+        }, 2000);
+
+
+
         var winner;
         if (playerScore === robotScore) {
             winner = "draw";
@@ -147,7 +179,9 @@ var playerScissors = document.querySelector("#scissors");
 
 
 playerRock.addEventListener('click', function () {
-
+    gameBtns.forEach(x => {
+        x.classList.toggle("block");
+    });
     var aiMove = randomChar(3);
     aiMoveShow(aiMove);
     gameField.innerHTML = whoWins(1, aiMove);
@@ -155,11 +189,18 @@ playerRock.addEventListener('click', function () {
     roundCount++;
     roundCountField.innerHTML = roundCount;
     gameFinish(maxRoundsCount, roundCount);
+    setTimeout(x => {
+        gameBtns.forEach(x => {
+            x.classList.toggle("block");
+        });
+    }, btnsTimeout);
 
 });
 
 playerPaper.addEventListener('click', function () {
-
+    gameBtns.forEach(x => {
+        x.classList.toggle("block");
+    });
     var aiMove = randomChar(3);
     aiMoveShow(aiMove);
     gameField.innerHTML = whoWins(2, aiMove);
@@ -167,11 +208,17 @@ playerPaper.addEventListener('click', function () {
     roundCount++;
     roundCountField.innerHTML = roundCount;
     gameFinish(maxRoundsCount, roundCount);
-
+    setTimeout(x => {
+        gameBtns.forEach(x => {
+            x.classList.toggle("block");
+        });
+    }, btnsTimeout);
 });
 
 playerScissors.addEventListener('click', function () {
-
+    gameBtns.forEach(x => {
+        x.classList.toggle("block");
+    });
     var aiMove = randomChar(3);
     aiMoveShow(aiMove);
     gameField.innerHTML = whoWins(3, aiMove);
@@ -179,7 +226,11 @@ playerScissors.addEventListener('click', function () {
     roundCount++;
     roundCountField.innerHTML = roundCount;
     gameFinish(maxRoundsCount, roundCount);
-
+    setTimeout(x => {
+        gameBtns.forEach(x => {
+            x.classList.toggle("block");
+        });
+    }, btnsTimeout);
 });
 
 
