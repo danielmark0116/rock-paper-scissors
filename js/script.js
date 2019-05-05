@@ -1,6 +1,19 @@
 'use strict';
 
 var gameField = document.querySelector("#game-winner");
+var playerScoreField = document.querySelector("#player-score");
+var robotScoreField = document.querySelector("#robot-score");
+var roundCountField = document.querySelector("#round-count");
+
+// playerScoreField.innerHTML = 0;
+// robotScoreField.innerHTML = 0;
+
+var playerScore = 0;
+var robotScore = 0;
+var roundCount = 1;
+
+roundCountField.innerHTML = 1;
+
 
 // ------------------------------------------------------ 
 // RULES: ------------------------------------------
@@ -28,10 +41,16 @@ var whoWins = (x, y) => {
     if (x === y) {
         return "draw";
     } else if ((x === 1 && y === 3) || (x === 2 && y === 1) || (x === 3 && y === 2)) {
+        playerScore++;
+        playerScoreField.innerHTML = playerScore;
         return "player";
     } else if ((x === 1 && y === 2) || (x === 2 && y === 3)) {
+        robotScore++;
+        robotScoreField.innerHTML = robotScore;
         return "robot";
     } else {
+        robotScore++;
+        robotScoreField.innerHTML = robotScore;
         return "robot";
     }
 };
@@ -46,6 +65,7 @@ var aiMoveShow = x => {
     aiBtns[x - 1].classList.add("active");
 };
 
+// ANIMATIONS
 var gameAnimation = x => {
     var container = document.querySelector("#robot-move");
     setTimeout(function () {
@@ -61,6 +81,12 @@ var gameAnimation = x => {
     // container.classList.add("animated", "bounce");
 };
 
+// MAX round count and then:
+var gameFinish = (maxRounds, roundNumber) => {
+    if (maxRounds === roundNumber) {
+        roundCountField.innerHTML = "finish";
+    }
+};
 
 
 // CODE: ------------------------------------------
@@ -78,6 +104,9 @@ playerRock.addEventListener('click', function () {
     aiMoveShow(aiMove);
     gameField.innerHTML = whoWins(1, aiMove);
     gameAnimation();
+    roundCount++;
+    roundCountField.innerHTML = roundCount;
+    gameFinish(10, roundCount);
 
 });
 
@@ -87,6 +116,9 @@ playerPaper.addEventListener('click', function () {
     aiMoveShow(aiMove);
     gameField.innerHTML = whoWins(2, aiMove);
     gameAnimation();
+    roundCount++;
+    roundCountField.innerHTML = roundCount;
+    gameFinish(10, roundCount);
 
 });
 
@@ -96,12 +128,15 @@ playerScissors.addEventListener('click', function () {
     aiMoveShow(aiMove);
     gameField.innerHTML = whoWins(3, aiMove);
     gameAnimation();
+    roundCount++;
+    roundCountField.innerHTML = roundCount;
+    gameFinish(10, roundCount);
 
 });
 
 
 
-var aiMove;
+// var aiMove;
 
 
 // gameField.innerHTML = aiMove;

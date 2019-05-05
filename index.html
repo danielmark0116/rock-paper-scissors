@@ -24,6 +24,12 @@
         <div class="container">
             <div class="row">
                 <div class="col col-sm-12">
+                    <h2>Runda</h2>
+                    <div id="round-count"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-sm-12">
                     <h2>Your move:</h2>
                 </div>
             </div>
@@ -46,7 +52,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col col-sm-12 d-flex justify-content-center">
+                <div class="col col-sm-4">
+                    <p>your score</p>
+                    <div id="player-score">0</div>
+                </div>
+                <div class="col col-sm-4 d-flex justify-content-center">
                     <div id="robot-move" class="animated bounce">
                         <div class="btn-game-robot bounce">
                             <i class="far fa-hand-rock"></i>
@@ -61,6 +71,10 @@
                             <i class="far fa-circle"></i>
                         </div>
                     </div>
+                </div>
+                <div class="col col-sm-4">
+                    <p>comp score</p>
+                    <div id="robot-score">0</div>
                 </div>
             </div>
             <div class="row">
