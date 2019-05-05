@@ -8,6 +8,8 @@ var gameSection = document.querySelector("#game-section");
 var resultsSection = document.querySelector("#results-section");
 var startGameBtn = document.querySelector("#start-btn");
 var winnerField = document.querySelector("#winner");
+var maxRoundsCountField = document.querySelector("#max-rounds-count");
+
 
 
 // playerScoreField.innerHTML = 0;
@@ -16,12 +18,28 @@ var winnerField = document.querySelector("#winner");
 var playerScore = 0;
 var robotScore = 0;
 var roundCount = 1;
-
+var maxRoundsCount;
 roundCountField.innerHTML = 1;
 
+
 startGameBtn.addEventListener("click", function () {
-    gameSection.style.display = "block";
-    startGameBtn.classList.toggle("active");
+    maxRoundsCount = prompt("How many rounds you want to play?", "Input must be integer");
+    maxRoundsCount = parseInt(maxRoundsCount);
+    maxRoundsCount++;
+    maxRoundsCountField.innerHTML = maxRoundsCount - 1;
+    if (Number.isInteger(maxRoundsCount)) {
+        // console.log("to jest liczba");
+        gameSection.style.display = "block";
+        startGameBtn.classList.toggle("active");
+    } else {
+        alert("Musi byc liczba");
+    }
+    // console.log(typeof maxRoundsCount);
+    // console.log(maxRoundsCount);
+
+
+    // gameSection.style.display = "block";
+    // startGameBtn.classList.toggle("active");
 });
 
 // ------------------------------------------------------ 
@@ -93,7 +111,8 @@ var gameAnimation = x => {
 // MAX round count and then:
 var gameFinish = (maxRounds, roundNumber) => {
     if (maxRounds === roundNumber) {
-        roundCountField.innerHTML = "finish";
+        roundCountField.style.display = "none";
+        maxRoundsCountField.innerHTML = "Game has ended";
         // gameSection.style.display = "none";
         playerRock.classList.toggle("off");
         playerPaper.classList.toggle("off");
@@ -135,7 +154,7 @@ playerRock.addEventListener('click', function () {
     gameAnimation();
     roundCount++;
     roundCountField.innerHTML = roundCount;
-    gameFinish(10, roundCount);
+    gameFinish(maxRoundsCount, roundCount);
 
 });
 
@@ -147,7 +166,7 @@ playerPaper.addEventListener('click', function () {
     gameAnimation();
     roundCount++;
     roundCountField.innerHTML = roundCount;
-    gameFinish(10, roundCount);
+    gameFinish(maxRoundsCount, roundCount);
 
 });
 
@@ -159,7 +178,7 @@ playerScissors.addEventListener('click', function () {
     gameAnimation();
     roundCount++;
     roundCountField.innerHTML = roundCount;
-    gameFinish(10, roundCount);
+    gameFinish(maxRoundsCount, roundCount);
 
 });
 
