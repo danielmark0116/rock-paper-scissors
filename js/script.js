@@ -17,10 +17,6 @@ var maxRoundsCountField = document.querySelector("#max-rounds-count");
 var gameBtns = document.querySelectorAll(".btn-game");
 
 
-
-// playerScoreField.innerHTML = 0;
-// robotScoreField.innerHTML = 0;
-
 var playerScore = 0;
 var robotScore = 0;
 var roundCount = 1;
@@ -34,18 +30,12 @@ startGameBtn.addEventListener("click", function () {
     maxRoundsCount++;
     maxRoundsCountField.innerHTML = maxRoundsCount - 1;
     if (Number.isInteger(maxRoundsCount)) {
-        // console.log("to jest liczba");
         gameSection.style.display = "block";
         startGameBtn.classList.toggle("active");
     } else {
-        alert("Musi byc liczba");
+        alert("Please, type in integer");
     }
-    // console.log(typeof maxRoundsCount);
-    // console.log(maxRoundsCount);
 
-
-    // gameSection.style.display = "block";
-    // startGameBtn.classList.toggle("active");
 });
 
 // ------------------------------------------------------ 
@@ -70,7 +60,6 @@ var randomChar = x => {
 
 // evaluates who wins, player or robot or both
 var whoWins = (x, y) => {
-    // return "test" + x + y;
     if (x === y) {
         return "draw";
     } else if ((x === 1 && y === 3) || (x === 2 && y === 1) || (x === 3 && y === 2)) {
@@ -94,10 +83,9 @@ var whoWins = (x, y) => {
 // shows the robot's move
 var aiMoveShow = x => {
     var aiBtns = document.querySelectorAll(".btn-game-robot");
-    aiBtns[0].classList.remove("active");
-    aiBtns[1].classList.remove("active");
-    aiBtns[2].classList.remove("active");
-    aiBtns[3].classList.remove("active");
+    aiBtns.forEach(x => {
+        x.classList.remove("active");
+    });
     aiBtns[x - 1].classList.add("active");
 };
 
@@ -114,7 +102,6 @@ var gameAnimation = x => {
     gameField.style.display = "none";
     container.classList.remove("animated", "bounce");
     gameField.classList.remove("animated", "tada");
-    // container.classList.add("animated", "bounce");
 };
 
 var scoreAnimation = x => {
@@ -129,7 +116,6 @@ var scoreAnimation = x => {
     x.style.display = "none";
     x.classList.remove("animated", "bounce");
     x.classList.remove("animated", "rotateIn");
-    // container.classList.add("animated", "bounce");
 };
 
 // MAX round count and then:
@@ -144,7 +130,6 @@ var gameFinish = (maxRounds, roundNumber) => {
             test2.style.display = "none";
         }, 1800);
         roundCountField.style.display = "none";
-        // gameSection.style.display = "none";
         playerRock.classList.toggle("off");
         playerPaper.classList.toggle("off");
         playerScissors.classList.toggle("off");
@@ -232,10 +217,3 @@ playerScissors.addEventListener('click', function () {
         });
     }, btnsTimeout);
 });
-
-
-
-// var aiMove;
-
-
-// gameField.innerHTML = aiMove;
